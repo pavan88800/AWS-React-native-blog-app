@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "serviceConfiguration": {
+    "apiName": "blogappdemo",
+    "serviceName": "AppSync",
+    "gqlSchemaPath": "/Users/geekyants/Desktop/blogrn/blog-app-demo/amplify/backend/api/blogappdemo/schema.graphql",
+    "defaultAuthType": {
+      "mode": "AMAZON_COGNITO_USER_POOLS",
+      "cognitoUserPoolId": "authblogappdemo015f8e91"
+    },
+    "conflictResolution": {},
+    "additionalAuthTypes": [
+      {
+        "mode": "API_KEY",
+        "expirationTime": 350,
+        "apiKeyExpirationDate": "2023-04-21T18:29:57.181Z",
+        "keyDescription": "demoapp"
+      }
+    ]
+  }
+}
