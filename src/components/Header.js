@@ -1,18 +1,27 @@
-import React from 'react';
-import { View, Text } from 'react-native';
-import { t, color } from 'react-native-tailwindcss';
-import { LinearGradient } from 'expo-linear-gradient';
-import { useNavigationState } from '@react-navigation/native';
-import Ripple from 'react-native-material-ripple';
-import { AntDesign } from '@expo/vector-icons';
-
-import { GRADIENT_COLORS } from '../constants/colors';
-import routes from '../constants/routes';
-
+import React, { useContext } from 'react'
+import { View, Text } from 'react-native'
+import { t, color } from 'react-native-tailwindcss'
+import { LinearGradient } from 'expo-linear-gradient'
+import { useNavigationState } from '@react-navigation/native'
+import Ripple from 'react-native-material-ripple'
+import { AntDesign } from '@expo/vector-icons'
+import { GRADIENT_COLORS } from '../constants/colors'
+import routes from '../constants/routes'
+import { Auth } from 'aws-amplify'
+import { AuthContext } from '../AuthContext'
 const Header = ({ navigation, title, onDeletePost }) => {
   const currentScreen = useNavigationState(
-    (state) => state.routeNames[state.index]
-  );
+    state => state.routeNames[state.index]
+  )
+  const { setIsSingedIn } = useContext(AuthContext)
+  const sigOut = async () => {
+    try {
+      await Auth.signOut()
+      setIsSingedIn(false)
+    } catch (error) {
+      console.log('error signing out: ', error)
+    }
+  }
   return (
     <View style={[t.shadowMd, { height: 100 }]}>
       <LinearGradient
@@ -30,10 +39,10 @@ const Header = ({ navigation, title, onDeletePost }) => {
         <View style={[t.flexRow, { alignItems: 'center' }]}>
           <Ripple
             onPress={() => navigation.goBack()}
-            rippleColor="white"
+            rippleColor='white'
             style={[t.p4, { opacity: currentScreen === routes.Home ? 0 : 1 }]}
           >
-            <AntDesign name="arrowleft" size={24} color="white" />
+            <AntDesign name='arrowleft' size={24} color='white' />
           </Ripple>
           <Text style={[t.textWhite, t.fontBold, t.textXl, t.mL3]}>
             {title}
@@ -43,24 +52,24 @@ const Header = ({ navigation, title, onDeletePost }) => {
           {currentScreen !== routes.Create && (
             <Ripple
               onPress={() => navigation.navigate(routes.Create)}
-              rippleColor="white"
+              rippleColor='white'
               style={[t.p4]}
             >
-              <AntDesign name="pluscircle" size={24} color="white" />
+              <AntDesign name='pluscircle' size={24} color='white' />
             </Ripple>
           )}
           {onDeletePost && (
-            <Ripple onPress={onDeletePost} rippleColor="white" style={[t.p4]}>
-              <AntDesign name="delete" size={24} color="white" />
+            <Ripple onPress={onDeletePost} rippleColor='white' style={[t.p4]}>
+              <AntDesign name='delete' size={24} color='white' />
             </Ripple>
           )}
-          <Ripple rippleColor="white" style={[t.p4, t.mR2]}>
-            <AntDesign name="logout" size={24} color="white" />
+          <Ripple onPress={sigOut} rippleColor='white' style={[t.p4, t.mR2]}>
+            <AntDesign name='logout' size={24} color='white' />
           </Ripple>
         </View>
       </LinearGradient>
     </View>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header
