@@ -1,6 +1,14 @@
 # AWS-React-native-blog-app
 
-* This project was generated with Expo React-Native and this APP Is use for to Create Blog   
+* This project was generated with Expo React-Native and this APP Is used for to Create Blog   
+
+# Tech stack 
+
+- React-Native Expo
+- AWS Amplify
+- AWS Cognito
+- AWS dynamodb
+
 
 # Install, Configure & Run
 
