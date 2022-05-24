@@ -5,6 +5,7 @@
 # Tech stack 
 
 - React-Native Expo
+- React Navigation
 - AWS Amplify
 - AWS Cognito
 - AWS dynamodb
