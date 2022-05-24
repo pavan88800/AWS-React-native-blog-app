@@ -1,6 +1,6 @@
 # AWS-React-native-blog-app
 
-This project was generated with Expo React-Native
+* This project was generated with Expo React-Native and this APP Is use for to Create Blog   
 
 # Install, Configure & Run
 
