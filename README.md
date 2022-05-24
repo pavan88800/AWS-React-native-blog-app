@@ -8,7 +8,7 @@
 - React Navigation
 - AWS Amplify
 - AWS Cognito
-- AWS dynamodb
+- AWS Dynamodb
 
 
 # Install, Configure & Run
